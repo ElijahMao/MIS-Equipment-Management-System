@@ -37,14 +37,24 @@
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <div class="form-input">
-                                        <input type="password" class="form-control" name="emp_no" placeholder="員工編號.." autofocus>
+                                        <input type="text" maxlength="11" class="form-control" name="emp_no" placeholder="員工編號.." autofocus>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <input type="text" class="form-control" name="emp_name" placeholder="員工姓名.." readonly>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <div class="form-input">
-                                        <input type="text" class="form-control" name="assets_no" placeholder="設備編號..">
+										<!--<input type="text" class="form-control" name="assets_no" placeholder="設備編號.."autofocus>-->
+                                        <select class="form-control" name="ass_no" disabled>
+　											<option value="none">請選擇設備編號</option>
+										</select>
                                     </div>
                                 </div>
                             </div>

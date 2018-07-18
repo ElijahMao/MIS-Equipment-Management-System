@@ -1,3 +1,24 @@
+<?php
+	if(empty($_POST['emp_no'])){
+		echo "<script>";
+		echo "alert('員工編號不可為空值，請重新輸入！');";
+		echo "location.href='http://localhost/borrow.html'";
+		echo "</script>";
+	}else{
+		require("connect.php");
+		
+		$emp_no=substr($_POST['emp_no'],-8);
+		$emp_sql=mysql_query("select * from employee where EMP_NO='$emp_no'");
+		$emp_data=mysql_fetch_row($emp_sql);
+		
+		if(empty($emp_data)){
+			echo "<script>";
+			echo "alert('查無此員工編號 $emp_no\\n請重新輸入！');";
+			echo "location.href='http://localhost/borrow.html'";
+			echo "</script>";
+		}
+	}
+?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -37,15 +58,58 @@
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <div class="form-input">
-                                        <input type="text" class="form-control" name="emp_no" value="<?php echo substr($_POST['emp_no'],3,10) ?>">
+                                        <input type="text" class="form-control" name="emp_no" value="<?php echo $emp_data[0] ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <div class="form-input">
+                                        <input type="text" class="form-control" name="emp_name" value="<?php echo $emp_data[1] ?>" readonly>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <div class="form-input">
-                                        <input type="text" class="form-control" name="assets_no" placeholder="設備編號.."autofocus>
+										<select class="form-control" name="assets_no">
+　											<option value="none">請選擇設備編號</option>
+												<optgroup label="筆記型電腦區">
+<?php
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'NB%' and IN_STUCK ='YES'");
+	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
+		$ass_data=mysql_fetch_row($ass_sql);
+?>													
+													<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
+<?php
+	
+	}
+?>	
+												<optgroup label="數位相機區">
+<?php
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'SONY%' and IN_STUCK ='YES'");
+	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
+		$ass_data=mysql_fetch_row($ass_sql);
+?>													
+													<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
+<?php
+	
+	}
+?>
+												<optgroup label="儲存設備區">
+<?php
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'USB%' and IN_STUCK ='YES'");
+	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
+		$ass_data=mysql_fetch_row($ass_sql);
+?>													
+													<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
+<?php
+	
+	}
+?>												
+										</select>
                                     </div>
+									
                                 </div>
                             </div>
 							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">

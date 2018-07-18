@@ -5,7 +5,7 @@
 	echo "<br>";
 	echo $_POST['assets_no'];
 	echo "<br>";
-	
+	/*
 	if(($_POST['emp_no'])=="員工編號.."){
 		echo "<script>";
 		echo "alert('員工編號不可為空值，請重新輸入！');";
@@ -55,7 +55,7 @@
 		}else if($assets_data[3]=="NO"){
 			echo "<script>";
 			echo "alert('此設備已被借出，請聯絡資訊人員！');";
-			echo "location.href='http://localhost/borrow.html'";
+			echo "location.href='http://localhost/mis.php'";
 			//echo "window.close();";
 			echo "</script>";
 		}else{
