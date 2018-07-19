@@ -26,14 +26,14 @@
 		<tr>
 			<td height="200px" align="center" colspan="5">
 				<div class="contact-title wow fadeIn">
-                       <h3 class="font28 mb50 xs-mb30 xs-font22 xs-mt20">歷史紀錄</h3>
+                       <font size="48px">歷史紀錄</font>
                 </div>
 			</td>
 		</tr>
 	</table>
-	<table style="background-color:white; border:3px #31dc89 outset; font-size:20px;"  border='1' align="center" width="70%">
-		<tr>
-			<td align="center" width="18%">員工編號</td>
+	<table style="background-color:white; border:3px #31dc89 outset; font-size:24px;"  border='1' align="center" width="70%">
+		<tr style="background-color:#99FF99">
+			<td align="center" height="36px" width="18%">員工編號</td>
 			<td align="center" width="16%">員工姓名</td>
 			<td align="center" width="16%">設備編號</td>
 			<td align="center" width="25%">借出日期</td>
@@ -46,7 +46,7 @@
 		$rs=mysql_fetch_row($data);
 ?>
 		<tr>
-			<td align="center"><?php echo $rs[0]?></td>
+			<td align="center" height="36px"><?php echo $rs[0]?></td>
 			<td align="center"><?php echo $rs[1]?></td>
 			<td align="center"><?php echo $rs[2]?></td>
 			<td align="center"><?php echo $rs[3]?></td>

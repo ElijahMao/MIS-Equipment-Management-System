@@ -2,7 +2,7 @@
 	require("connect.php");
 ?>
 <!doctype html>
-<html class="no-js" lang="zxx>
+<html class="no-js" lang="zxx">
 <head>
     <!--====== USEFULL META ======-->
 	<meta charset="UTF-8">
@@ -48,63 +48,74 @@
                 <div class="container">
                     <div class="col-md-8 col-lg-7 col-sm-12 col-xs-12">
                         <div class="welcome-text">
-                            <h1>MIS資訊設備管理系統</h1>
+							<p><h1>MIS資訊設備管理系統</h1></p>
 							<div class="enroll-button">
-										<a href="http://localhost/borrow.html" target="_blank">借出設備</a>&nbsp;
+										<a href="http://localhost/borrow.html">借出設備</a>&nbsp;
 										<a href="http://localhost/return.html">歸還設備</a>
 							</div><br>
 							<div id="showbox"></div><br>
 							<div>
-								<table style="color:black; background-color:white; border:3px #31dc89 outset; font-size:24px;"  border='10' align="center" width="180%">
+								<table style="color:black; background-color:white; border:3px #31dc89 outset; font-size:36px;"  border='10' align="center" width="180%">
 									<tr style="background-color:#66FF66">
-										<td align="center" height="48px">可外借之設備清單</td>
-									</tr>
-									<tr style="background-color:#99FF99">
-										<td align="center" height="36px">筆記型電腦區</td>
+										<td align="center" height="48px"><b>可外借之設備清單</b></td>
 									</tr>
 <?php
-	$data=mysql_query("select ASS_NO,IN_STUCK from assets where ASS_NO like 'NB%'");
-	for($i=1;$i<=mysql_num_rows($data);$i++){
-		$rs=mysql_fetch_row($data);
-		if($rs[1]==YES){
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'NB%' and IN_STUCK='YES'");
+	$area=mysql_fetch_row($ass_sql);
+	if(empty($area)==false){
 ?>									
-									<tr>
-										<td align="center" height="36px"><?php echo $rs[0]?></td>
+									<tr style="background-color:#99FF99">
+										<td align="center" height="40px">筆記型電腦區</td>
 									</tr>
+									
 <?php
-		}
 	}
-?>
-									<tr style="background-color:#99FF99">
-										<td align="center" height="36px">數位相機區</td>
-									</tr>
-<?php
-	$data=mysql_query("select ASS_NO,IN_STUCK from assets where ASS_NO like 'SONY%'");
-	for($i=1;$i<=mysql_num_rows($data);$i++){
-		$rs=mysql_fetch_row($data);
-		if($rs[1]==YES){
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'NB%' and IN_STUCK='YES'");
+	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
+		$ass_data=mysql_fetch_row($ass_sql);
 ?>									
 									<tr>
-										<td align="center" height="36px"><?php echo $rs[0]?></td>
+										<td align="center" height="40px"><?php echo $ass_data[0]?></td>
 									</tr>
 <?php
-		}
 	}
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'SONY%' and IN_STUCK='YES'");
+	$area=mysql_fetch_row($ass_sql);
+	if(empty($area)==false){
 ?>									
 									<tr style="background-color:#99FF99">
-										<td align="center" height="36px">儲存設備區</td>
+										<td align="center" height="40px">數位相機區</td>
 									</tr>
+									
 <?php
-	$data=mysql_query("select ASS_NO,IN_STUCK from assets where ASS_NO like 'USB%'");
-	for($i=1;$i<=mysql_num_rows($data);$i++){
-		$rs=mysql_fetch_row($data);
-		if($rs[1]==YES){
+	}
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'SONY%' and IN_STUCK='YES'");
+	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
+		$ass_data=mysql_fetch_row($ass_sql);
 ?>									
 									<tr>
-										<td align="center" height="36px"><?php echo $rs[0]?></td>
+										<td align="center" height="40px"><?php echo $ass_data[0]?></td>
 									</tr>
 <?php
-		}
+	}
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'USB%' and IN_STUCK='YES'");
+	$area=mysql_fetch_row($ass_sql);
+	if(empty($area)==false){
+?>									
+									<tr style="background-color:#99FF99">
+										<td align="center" height="40px">儲存設備區</td>
+									</tr>
+									
+<?php
+	}
+	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'USB%' and IN_STUCK='YES'");
+	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
+		$ass_data=mysql_fetch_row($ass_sql);
+?>									
+									<tr>
+										<td align="center" height="40px"><?php echo $ass_data[0]?></td>
+									</tr>
+<?php
 	}
 ?>
 								</table>

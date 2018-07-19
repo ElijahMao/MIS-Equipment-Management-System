@@ -26,33 +26,35 @@
 		<tr>
 			<td height="200px" align="center">
 				<div class="contact-title wow fadeIn">
-                       <h3 class="font28 mb50 xs-mb30 xs-font22 xs-mt20">歸還設備</h3>
+                       <font size="48px">歸還設備</font>
                 </div>
 			</td>
 		<tr>
 			<td align="center">
-				<div class="contact-form wow fadeIn">
+				<div class="contact-form">
                     <form action="return.php" method="post">
                         <div class="row">
-                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="form-input">
-                                        <input type="password" class="form-control" name="emp_no" placeholder="員工編號.." autofocus>
-                                    </div>
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <input type="text" class="form-control" style="font-size:36px" name="emp_no" placeholder="員工編號.." autofocus maxlength="11">
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <div class="form-input">
-                                        <input type="text" class="form-control" name="assets_no" placeholder="設備編號..">
-                                    </div>
+							<div class="form-group">
+                                <div class="form-input">
+                                    <input type="text" class="form-control" style="font-size:36px" name="emp_name" placeholder="員工姓名.." readonly>
                                 </div>
                             </div>
-							<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                                <div class="form-group mb0">
-									<button type="button" onclick="javascript:location.href='http://localhost/mis.php'">回首頁</button>
-                                    <button type="submit">確定</button>
+                            <div class="form-group">
+                                <div class="form-input">
+									<!--<input type="text" class="form-control" name="assets_no" placeholder="設備編號.."autofocus>-->
+                                    <select class="form-control" style="font-size:36px; height:58px" name="ass_no" disabled>
+　										<option value="none">請選擇設備編號</option>
+									</select>
                                 </div>
+                            </div>
+							<div class="form-group mb0">
+								<button type="button" onclick="javascript:location.href='http://localhost/mis.php'">回首頁</button>
+                                <button type="submit">確定</button>
                             </div>
                         </div>
                     </form>
