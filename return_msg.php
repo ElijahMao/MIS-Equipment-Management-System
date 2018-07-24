@@ -18,7 +18,6 @@
 		echo "<script>";
 		echo "alert('歸還成功！');";
 		echo "location.href='http://localhost/mis.php'";
-		//echo "window.close();";
 		echo "</script>";
 	}
 ?>

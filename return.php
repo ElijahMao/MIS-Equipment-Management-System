@@ -13,7 +13,7 @@
 		
 		if(empty($emp_data)){
 			echo "<script>";
-			echo "alert('查無此員工編號，請重新輸入！');";
+			echo "alert('無此員工編號，請重新輸入！');";
 			echo "location.href='http://localhost/return.html'";
 			echo "</script>";
 		}
@@ -64,73 +64,43 @@
                                 <div class="form-input">
                                     <input type="text" class="form-control" style="font-size:36px" name="emp_name" value="<?php echo $emp_data[1] ?>" readonly>
                                 </div>
-                            </div>
+                            </div>		
+							
+<?php
+	$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE EMP_NO='$emp_no' AND Return_Date is null ORDER BY ASS_NO");
+	if(empty(mysql_fetch_row($his_sql))){
+		
+?>
+							<div class="form-group">
+                                <div class="form-input">
+                                    <input type="text" class="form-control" style="font-size:36px; color:red;" name="none" value="您未借出任何設備" readonly>
+                                </div>
+                            </div>		
+<?php
+	}else{
+?>									
+							
+							
+							
                             <div class="form-group">
                                 <div class="form-input">
 									<select class="form-control" style="font-size:36px; height:58px" name="assets_no">
 <?php
-	$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE EMP_NO='$emp_no' AND Return_Date is null ORDER BY ASS_NO");
-	for($i=1;$i<=mysql_num_rows($his_sql);$i++){
-		$his_data=mysql_fetch_row($his_sql);
+		$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE EMP_NO='$emp_no' AND Return_Date is null ORDER BY ASS_NO");
+		for($i=1;$i<=mysql_num_rows($his_sql);$i++){
+			$his_data=mysql_fetch_row($his_sql);
 ?>
 										<option value="<?php echo $his_data[0] ?>"><?php echo $his_data[0] ?></option>
 <?php
-	}
-?>
-　											<optgroup label="幫別人歸還選下面這裡">
-
-
-<?php
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'NB%' and IN_STUCK='NO'");
-	$area=mysql_fetch_row($ass_sql);
-	if(empty($area)==false){
-?>									
-										<optgroup label="筆記型電腦區">
-									
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'NB%' and IN_STUCK='NO'");
-	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
-		$ass_data=mysql_fetch_row($ass_sql);
-?>									
-										<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'SONY%' and IN_STUCK='NO'");
-	$area=mysql_fetch_row($ass_sql);
-	if(empty($area)==false){
-?>
-										<optgroup label="數位相機區">
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'SONY%' and IN_STUCK='NO'");
-	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
-		$ass_data=mysql_fetch_row($ass_sql);
-?>									
-										<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
-
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'USB%' and IN_STUCK='NO'");
-	$area=mysql_fetch_row($ass_sql);
-	if(empty($area)==false){
-?>									
-										<optgroup label="儲存設備區">
-									
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'USB%' and IN_STUCK='NO'");
-	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
-		$ass_data=mysql_fetch_row($ass_sql);
-?>									
-										<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
-<?php
-	}
+		}
 ?>					
 
 									</select>
                                 </div>
 							</div>
+<?php
+	}
+?>	
 							<div class="form-group mb0">
 								<button type="button" onclick="javascript:location.href='http://localhost/mis.php'">回首頁</button>
                                 <button type="submit">確定</button>

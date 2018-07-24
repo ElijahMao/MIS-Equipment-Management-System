@@ -13,8 +13,7 @@
 		
 		if(empty($emp_data)){
 			echo "<script>";
-			//echo "alert('查無此員工編號 $emp_no\\n請重新輸入！');";
-			echo "alert('查無此員工編號，請重新輸入！');";
+			echo "alert('無此員工編號，請重新輸入！');";
 			echo "location.href='http://localhost/borrow.html'";
 			echo "</script>";
 		}
@@ -70,56 +69,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-input">
-									<select class="form-control" style="font-size:36px; height:58px" name="assets_no">
-　										<option value="none">請選擇設備編號</option>
-<?php
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'NB%' and IN_STUCK='YES'");
-	$area=mysql_fetch_row($ass_sql);
-	if(empty($area)==false){
-?>									
-										<optgroup label="筆記型電腦區">
-									
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'NB%' and IN_STUCK='YES'");
-	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
-		$ass_data=mysql_fetch_row($ass_sql);
-?>									
-										<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'SONY%' and IN_STUCK='YES'");
-	$area=mysql_fetch_row($ass_sql);
-	if(empty($area)==false){
-?>
-										<optgroup label="數位相機區">
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'SONY%' and IN_STUCK='YES'");
-	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
-		$ass_data=mysql_fetch_row($ass_sql);
-?>									
-										<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
-
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'USB%' and IN_STUCK='YES'");
-	$area=mysql_fetch_row($ass_sql);
-	if(empty($area)==false){
-?>									
-										<optgroup label="儲存設備區">
-									
-<?php
-	}
-	$ass_sql=mysql_query("select ASS_NO from assets where ASS_NO like 'USB%' and IN_STUCK='YES'");
-	for($i=1;$i<=mysql_num_rows($ass_sql);$i++){
-		$ass_data=mysql_fetch_row($ass_sql);
-?>									
-										<option value="<?php echo $ass_data[0] ?>"><?php echo $ass_data[0] ?></option>
-<?php
-	}
-?>					
-									</select>
+								    <input type="text" class="form-control" style="font-size:36px" name="ass_no" placeholder="設備編號.." autofocus maxlength="6">
                                 </div>
 							</div>
 							<div class="form-group mb0">
