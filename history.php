@@ -56,6 +56,15 @@
 	}
 ?>
 	</table>
-	
+	<br>
+	<table align="center">
+		<tr>
+			<td>
+				<div class="contact-form">
+					<button type="button" onclick="javascript:location.href='../view.php'">回首頁</button>
+				</div>
+			</td>	
+		</tr>	
+	</table>	
 </body>
 </html>

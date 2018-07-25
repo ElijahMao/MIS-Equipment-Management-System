@@ -2,7 +2,7 @@
 	if(empty($_POST['emp_no'])){
 		echo "<script>";
 		echo "alert('員工編號不可為空值，請重新輸入！');";
-		echo "location.href='http://localhost/return.html'";
+		echo "location.href='../return.html'";
 		echo "</script>";
 	}else{
 		require("connect.php");
@@ -14,7 +14,7 @@
 		if(empty($emp_data)){
 			echo "<script>";
 			echo "alert('無此員工編號，請重新輸入！');";
-			echo "location.href='http://localhost/return.html'";
+			echo "location.href='../return.html'";
 			echo "</script>";
 		}
 	}
@@ -102,7 +102,7 @@
 	}
 ?>	
 							<div class="form-group mb0">
-								<button type="button" onclick="javascript:location.href='http://localhost/mis.php'">回首頁</button>
+								<button type="button" onclick="javascript:location.href='../mis.php'">回首頁</button>
                                 <button type="submit">確定</button>
                             </div>
                         </div>

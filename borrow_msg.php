@@ -11,17 +11,17 @@
 	if(empty($_POST['ass_no'])){
 		echo "<script>";
 		echo "alert('設備編號不可為空值，請重新輸入！');";
-		echo "location.href='http://localhost/borrow.html'";
+		echo "location.href='../borrow.html'";
 		echo "</script>";
 	}else if(empty($assets_data)){
 		echo "<script>";
 		echo "alert('無此設備編號，請重新輸入！');";
-		echo "location.href='http://localhost/borrow.html'";
+		echo "location.href='../borrow.html'";
 		echo "</script>";
 	}else if($assets_data[3]=="NO"){
 		echo "<script>";
 		echo "alert('此設備已被借出，請聯絡資訊人員！');";
-		echo "location.href='http://localhost/mis.php'";
+		echo "location.href='../mis.php'";
 		echo "</script>";
 	}else{
 		$datetime = date ("Y-m-d H:i:s"); 
@@ -29,7 +29,7 @@
 		$assets_update_sql=mysql_query("UPDATE assets SET IN_STUCK = 'NO' WHERE assets.ASS_NO = '$assets_no'");
 		echo "<script>";
 		echo "alert('借出成功！');";
-		echo "location.href='http://localhost/mis.php'";
+		echo "location.href='../mis.php'";
 		echo "</script>";
 	}
 ?>

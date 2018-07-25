@@ -9,7 +9,7 @@
 	if(empty($assets_data)){
 		echo "<script>";
 		echo "alert('未選擇要歸還的設備編號，請重新輸入！');";
-		echo "location.href='http://localhost/return.html'";
+		echo "location.href='../return.html'";
 		echo "</script>";
 	}else{
 		$datetime = date ("Y-m-d H:i:s"); 
@@ -17,7 +17,7 @@
 		$assets_update_sql=mysql_query("UPDATE assets SET IN_STUCK = 'YES' WHERE assets.ASS_NO = '$assets_no'");
 		echo "<script>";
 		echo "alert('歸還成功！');";
-		echo "location.href='http://localhost/mis.php'";
+		echo "location.href='../mis.php'";
 		echo "</script>";
 	}
 ?>

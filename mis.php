@@ -50,8 +50,8 @@
                         <div class="welcome-text">
 							<p><h1>MIS資訊設備管理系統</h1></p>
 							<div class="enroll-button">
-										<a href="http://localhost/borrow.html">借出設備</a>&nbsp;
-										<a href="http://localhost/return.html">歸還設備</a>
+										<a href="../borrow.html">借出設備</a>&nbsp;
+										<a href="../return.html">歸還設備</a>
 							</div><br>
 							<div id="showbox"></div><br>
 							<div>
