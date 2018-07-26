@@ -1,13 +1,1 @@
-1.2018/6/25¶}©l¼¶¼g¦¹¨t²Î¡A¹w©w2018/7/31¤W½u¨Ï¥Î¡C¬°¥»¤H¦b¥Ý¦ù°ó¥ø·~ªÑ¥÷¦³­­¤½¥q¹ê²ß®É°µªº¤p±M®×¡A¥Øªº¦b©ó±N¥Ø«eÂÂ¦³ªº¸ê°T³]³Æ­É¥X¨t²Î§ó·s¬°ºô­¶ª©¡C
-
-2.­º¥ý¦w¸Ëºô¯¸¦øªA¾¹¡C
-	(1).¤U¸ü³Ì·sª©Appserv(AppServ¬°Apache+PHP+MySQL¬[¯¸Ãi¤H¥])¨Ã¦w¸Ë¡A¦w¸Ë®É³]©w¬Ò¬°¹w³](MySQL¤@©w­n³]©w8¦ì¼Æ¥H¤Wªº±K½X
-)¡C
-	(2).ºô­¶¹w³]©ñ¦bwww¸ê®Æ§¨©³¤U¡A­×§ï¤è¦¡¬°¶}±ÒC:\AppServ\Apache2.2\conf\httpd.conf§ä¨ìDocumentRoot "C:/AppServ/www"¡A¨Ã³]©w¸ô®|¡C
-	(3).¦p»Ý­×§ïMySQL¸ê®Æ¦s©ñ¸ô®|¡A¶}±ÒC:\AppServ\MySQL\my.ini§ä¨ìdatadir="C:\AppServ/MySQL/data"¡C
-
-3.ºô¸ô·j´MHTML§K¶O¼ÒªO¨Ã­×§ï¤Î¼W¥[»Ý­nªº¥\¯à¡C
-
-°Ñ¦Ò¸ê®Æ
-https://scriptmarks.com/%E4%BD%BF%E7%94%A8-appserv-%E5%9C%A8%E8%87%AA%E5%B7%B1%E9%9B%BB%E8%85%A6%E6%9C%AC%E6%A9%9F%E6%9E%B6%E8%A8%ADapache%E4%BC%BA%E6%9C%8D%E5%99%A8/
-http://fuunkao-sekai.blogspot.com/2011/10/appserv-seting.html
+2018/6/25é–‹å§‹æ’°å¯«æ­¤ç³»çµ±ï¼Œé å®š2018/7/31ä¸Šç·šä½¿ç”¨ã€‚ç‚ºæœ¬äººåœ¨ç¦¾ä¼¸å ‚ä¼æ¥­è‚¡ä»½æœ‰é™å…¬å¸å¯¦ç¿’æ™‚åšçš„å°å°ˆæ¡ˆï¼Œç›®çš„åœ¨æ–¼å°‡ç›®å‰èˆŠæœ‰çš„è³‡è¨Šè¨­å‚™å€Ÿå‡ºç³»çµ±æ›´æ–°ç‚ºç¶²é ç‰ˆã€‚
