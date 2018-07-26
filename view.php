@@ -50,8 +50,9 @@
                         <div class="welcome-text">
                             <p><h1>MIS資訊設備管理系統</h1></p>
 							<div class="enroll-button">
-										<a href="../history.php">歷史紀錄</a>&nbsp;
-										<a href="../insert.html">新增設備</a>
+										<a href="../history.php">歷史紀錄</a>&nbsp;&nbsp;
+										<a href="../insertAss.html">新增設備</a>&nbsp;&nbsp;
+										<a href="../insertEmp.html">新增員工</a>
 							</div><br>
 							<div id="showbox"></div><br>
 							<div>

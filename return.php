@@ -1,24 +1,3 @@
-<?php
-	if(empty($_POST['emp_no'])){
-		echo "<script>";
-		echo "alert('員工編號不可為空值，請重新輸入！');";
-		echo "location.href='../return.html'";
-		echo "</script>";
-	}else{
-		require("connect.php");
-		
-		$emp_no=substr($_POST['emp_no'],-8);
-		$emp_sql=mysql_query("select * from employee where EMP_NO='$emp_no'");
-		$emp_data=mysql_fetch_row($emp_sql);
-		
-		if(empty($emp_data)){
-			echo "<script>";
-			echo "alert('無此員工編號，請重新輸入！');";
-			echo "location.href='../return.html'";
-			echo "</script>";
-		}
-	}
-?>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -55,25 +34,16 @@
 				<div class="contact-form">
                     <form action="return_msg.php" method="post">
                         <div class="row">
-                            <div class="form-group">
-                                <div class="form-input">
-                                    <input type="text" class="form-control" style="font-size:36px" name="emp_no" value="<?php echo $emp_data[0] ?>" readonly>
-                                </div>
-                            </div>
-							<div class="form-group">
-                                <div class="form-input">
-                                    <input type="text" class="form-control" style="font-size:36px" name="emp_name" value="<?php echo $emp_data[1] ?>" readonly>
-                                </div>
-                            </div>		
-							
+                            
 <?php
-	$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE EMP_NO='$emp_no' AND Return_Date is null ORDER BY ASS_NO");
+	require("connect.php");
+	$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE Return_Date is null ORDER BY ASS_NO");
 	if(empty(mysql_fetch_row($his_sql))){
 		
 ?>
 							<div class="form-group">
                                 <div class="form-input">
-                                    <input type="text" class="form-control" style="font-size:36px; color:red;" name="none" value="您未借出任何設備" readonly>
+                                    <input type="text" class="form-control" style="font-size:36px; height:70px; color:red;" name="none" value="目前未借出任何設備" readonly>
                                 </div>
                             </div>		
 <?php
@@ -84,9 +54,10 @@
 							
                             <div class="form-group">
                                 <div class="form-input">
-									<select class="form-control" style="font-size:36px; height:58px" name="assets_no">
+									<select class="form-control" style="font-size:36px; height:70px" name="assets_no" id="assets_no" onchange="myFunction()">
+										<option value="no"></option>
 <?php
-		$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE EMP_NO='$emp_no' AND Return_Date is null ORDER BY ASS_NO");
+		$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE Return_Date is null ORDER BY ASS_NO");
 		for($i=1;$i<=mysql_num_rows($his_sql);$i++){
 			$his_data=mysql_fetch_row($his_sql);
 ?>
@@ -100,7 +71,24 @@
 							</div>
 <?php
 	}
-?>	
+?>									
+<p id="demo"></p>
+<script>
+function myFunction() {
+    var x = document.getElementById("assets_no").value;
+    document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+</script>                                
+							<div class="form-group">
+                                <div class="form-input">
+                                    <input type="text" class="form-control" style="font-size:36px; height:70px" name="emp_no" id="emp_no" placeholder="員工編號.." readonly>
+                                </div>
+                            </div>
+							<div class="form-group">
+                                <div class="form-input">
+                                    <input type="text" class="form-control" style="font-size:36px; height:70px" name="emp_name" id="emp_name" placeholder="員工姓名.." readonly>
+                                </div>
+                            </div>
 							<div class="form-group mb0">
 								<button type="button" onclick="javascript:location.href='../mis.php'">回首頁</button>
                                 <button type="submit">確定</button>

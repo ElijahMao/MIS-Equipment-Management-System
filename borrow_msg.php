@@ -3,6 +3,7 @@
 	require("connect.php");
 	
 	$emp_no=$_POST['emp_no'];
+	$emp_name=$_POST['emp_name'];
 	
 	$assets_no=$_POST['ass_no'];
 	$assets_sql=mysql_query("select * from assets where ASS_NO='$assets_no'");
@@ -28,7 +29,7 @@
 		$history_insert_sql=mysql_query("INSERT INTO history (EMP_NO, ASS_NO, Borrow_Date, Return_Date) VALUES ('$emp_no', '$assets_no', '$datetime', NULL)");
 		$assets_update_sql=mysql_query("UPDATE assets SET IN_STUCK = 'NO' WHERE assets.ASS_NO = '$assets_no'");
 		echo "<script>";
-		echo "alert('借出成功！');";
+		echo "alert('員工編號：$emp_no\\n員工姓名：$emp_name\\n設備編號：$assets_no\\n借出時間：$datetime\\n借出成功！');";
 		echo "location.href='../mis.php'";
 		echo "</script>";
 	}

@@ -2,7 +2,7 @@
 	if(empty($_POST['emp_no'])){
 		echo "<script>";
 		echo "alert('員工編號不可為空值，請重新輸入！');";
-		echo "location.href='../borrow.html'";
+		echo "location.href='../return.html'";
 		echo "</script>";
 	}else{
 		require("connect.php");
@@ -14,7 +14,7 @@
 		if(empty($emp_data)){
 			echo "<script>";
 			echo "alert('無此員工編號，請重新輸入！');";
-			echo "location.href='../borrow.html'";
+			echo "location.href='../return.html'";
 			echo "</script>";
 		}
 	}
@@ -30,7 +30,7 @@
     <meta name="keywords" content="App, Landing, Business, Onepage, Html, Business" />
 
     <!--====== TITLE TAG ======-->
-    <title>借出設備</title>
+    <title>歸還設備</title>
 
     <!--====== FAVICON ICON =======-->
     <link rel="shortcut icon" type="image/ico" href="assest/img/favicon.jpg" />
@@ -40,8 +40,6 @@
 
     <!--====== MAIN STYLESHEETS ======-->
     <link href="style.css" rel="stylesheet">
-	
-	
 </head>
 
 <body background="/assest/img/slider/slide_2.jpg">
@@ -49,13 +47,13 @@
 		<tr>
 			<td height="200px" align="center">
 				<div class="contact-title wow fadeIn">
-                       <font size="48px">借出設備</font>
+                       <font size="48px">歸還設備</font>
                 </div>
 			</td>
 		<tr>
 			<td align="center">
 				<div class="contact-form">
-                    <form action="borrow_msg.php" method="post">
+                    <form action="return_msg.php" method="post">
                         <div class="row">
                             <div class="form-group">
                                 <div class="form-input">
@@ -66,12 +64,43 @@
                                 <div class="form-input">
                                     <input type="text" class="form-control" style="font-size:36px; height:70px" name="emp_name" value="<?php echo $emp_data[1] ?>" readonly>
                                 </div>
-                            </div>
+                            </div>		
+							
+<?php
+	$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE EMP_NO='$emp_no' AND Return_Date is null ORDER BY ASS_NO");
+	if(empty(mysql_fetch_row($his_sql))){
+		
+?>
+							<div class="form-group">
+                                <div class="form-input">
+                                    <input type="text" class="form-control" style="font-size:36px; height:70px; color:red;" name="none" value="您未借出任何設備" readonly>
+                                </div>
+                            </div>		
+<?php
+	}else{
+?>									
+							
+							
+							
                             <div class="form-group">
                                 <div class="form-input">
-								    <input type="text" class="form-control" style="font-size:36px; height:70px" name="ass_no" placeholder="設備編號.." autofocus maxlength="6">
+									<select class="form-control" style="font-size:36px; height:70px" name="assets_no">
+<?php
+		$his_sql=mysql_query("SELECT ASS_NO FROM history WHERE EMP_NO='$emp_no' AND Return_Date is null ORDER BY ASS_NO");
+		for($i=1;$i<=mysql_num_rows($his_sql);$i++){
+			$his_data=mysql_fetch_row($his_sql);
+?>
+										<option value="<?php echo $his_data[0] ?>"><?php echo $his_data[0] ?></option>
+<?php
+		}
+?>					
+
+									</select>
                                 </div>
 							</div>
+<?php
+	}
+?>	
 							<div class="form-group mb0">
 								<button type="button" onclick="javascript:location.href='../mis.php'">回首頁</button>
                                 <button type="submit">確定</button>
